@@ -1,0 +1,314 @@
+/* Google Sheets Dropdown Widget Styles - Material UI Inspired */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: transparent;
+    padding: 10px;
+}
+
+#widget-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Dropdown Label */
+.dropdown-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+    letter-spacing: 0.1px;
+}
+
+/* Autocomplete Container */
+.autocomplete-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.autocomplete-input {
+    width: 100%;
+    padding: 16px 48px 16px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.87);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+.autocomplete-input:focus {
+    outline: none;
+    border-color: #1976d2;
+    border-width: 2px;
+    padding: 15px 47px 15px 15px;
+    box-shadow: none;
+}
+
+.autocomplete-input:hover:not(:focus) {
+    border-color: rgba(0, 0, 0, 0.87);
+}
+
+.autocomplete-input::placeholder {
+    color: rgba(0, 0, 0, 0.38);
+}
+
+.dropdown-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(0, 0, 0, 0.54);
+    pointer-events: none;
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.input-container.open .dropdown-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.input-spinner {
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Dropdown List */
+.dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,0.2), 
+                0 8px 10px 1px rgba(0,0,0,0.14), 
+                0 3px 14px 2px rgba(0,0,0,0.12);
+    max-height: 256px;
+    overflow-y: auto;
+    z-index: 1000;
+    margin-top: 4px;
+}
+
+.dropdown-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.87);
+    line-height: 1.5;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.dropdown-item.selected {
+    background-color: rgba(25, 118, 210, 0.08);
+    color: #1976d2;
+}
+
+.dropdown-item:active {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Loading Item */
+.loading-item {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 14px;
+}
+
+.spinner-small {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(25, 118, 210, 0.2);
+    border-top: 2px solid #1976d2;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 12px;
+}
+
+/* No Results */
+.no-results-item {
+    padding: 16px;
+    color: rgba(0, 0, 0, 0.54);
+    font-style: italic;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Type to Search */
+.type-to-search-item {
+    padding: 16px;
+    color: rgba(0, 0, 0, 0.54);
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Loading Overlay */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 14px;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(25, 118, 210, 0.2);
+    border-top: 3px solid #1976d2;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 12px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-message {
+    background-color: #ffebee;
+    border: 1px solid #ffcdd2;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+    color: #c62828;
+    font-size: 14px;
+}
+
+.retry-btn {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.retry-btn:hover {
+    background-color: #b71c1c;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.retry-btn:active {
+    background-color: #d32f2f;
+}
+
+/* Configuration Error */
+.config-error {
+    background-color: #fff3e0;
+    border: 1px solid #ffe0b2;
+    border-radius: 4px;
+    padding: 16px;
+    color: #e65100;
+    font-size: 14px;
+}
+
+.config-error p {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.config-error ul {
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+.config-error li {
+    margin-bottom: 4px;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+/* Scrollbar Styling */
+.dropdown-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdown-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.dropdown-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.dropdown-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+    
+    .autocomplete-input {
+        padding: 14px 44px 14px 14px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .autocomplete-input:focus {
+        padding: 13px 43px 13px 13px;
+    }
+    
+    .dropdown-label {
+        font-size: 13px;
+    }
+    
+    .dropdown-item {
+        padding: 14px 16px;
+    }
+}
+
+/* Focus visible for accessibility */
+.autocomplete-input:focus-visible {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+}
+
+.dropdown-item:focus-visible {
+    outline: 2px solid #1976d2;
+    outline-offset: -2px;
+    background-color: rgba(25, 118, 210, 0.08);
+}
+
