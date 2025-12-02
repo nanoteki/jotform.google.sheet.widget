@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheets Dropdown Widget</title>
+    <script src="//js.jotform.com/JotFormCustomWidget.min.js"></script>
+    <link rel="stylesheet" href="google-sheets-style.css">
+</head>
+<body>
+    <div id="widget-container">
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <span>Initializing...</span>
+        </div>
+        
+        <div id="error-message" class="error-message hidden">
+            <span id="error-text"></span>
+            <button id="retry-btn" class="retry-btn">Retry</button>
+        </div>
+        
+        <div id="dropdown-container">
+            <label id="question-label" class="dropdown-label"></label>
+
+            <div class="autocomplete-container">
+                <div class="input-container">
+                    <input type="text" id="search-input" class="autocomplete-input" placeholder="Type to search..." autocomplete="off" />
+                    <div class="dropdown-arrow">▼</div>
+                    <div id="input-spinner" class="input-spinner hidden">
+                        <div class="spinner-small"></div>
+                    </div>
+                </div>
+
+                <div id="dropdown-list" class="dropdown-list hidden">
+                    <div id="loading-options" class="loading-item hidden">
+                        <div class="spinner-small"></div>
+                        Searching...
+                    </div>
+                    <div id="no-results" class="no-results-item hidden">
+                        No options match your search
+                    </div>
+                    <div id="type-to-search" class="type-to-search-item">
+                        Type at least 2 characters to search...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden input to store the actual selected value -->
+            <input type="hidden" id="selected-value" />
+        </div>
+        
+        <div id="config-error" class="config-error hidden">
+            <p>Widget configuration required. Please configure the following parameters:</p>
+            <ul id="missing-params"></ul>
+        </div>
+    </div>
+
+    <script src="google-sheets-script.js"></script>
+</body>
+</html>
+
